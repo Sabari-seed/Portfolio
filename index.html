@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. S. Sabarinathan | Plant Geneticist & Assistant Professor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:         #0b0f14;
+  --bg2:        #111820;
+  --bg3:        #161e28;
+  --surface:    #1a2332;
+  --border:     rgba(255,255,255,0.07);
+  --emerald:    #10b981;
+  --emerald2:   #059669;
+  --emerald-glow: rgba(16,185,129,0.15);
+  --amber:      #f59e0b;
+  --amber2:     #d97706;
+  --amber-glow: rgba(245,158,11,0.15);
+  --white:      #f0f4f8;
+  --muted:      #6b7a8d;
+  --muted2:     #8a9ab0;
+  --accent:     #38bdf8;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+  --radius:     12px;
+  --shadow:     0 4px 24px rgba(0,0,0,0.4);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 15px; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--white);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: var(--emerald); text-decoration: none; transition: color .2s; }
+a:hover { color: var(--amber); }
+
+/* ── GRAIN OVERLAY ── */
+body::before {
+  content: "";
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.6;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 2.5rem;
+  background: rgba(11,15,20,0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: background .3s;
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.15rem; font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.02em;
+}
+.nav-logo span { color: var(--emerald); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: .8rem; font-weight: 500; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--muted2);
+  transition: color .2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--emerald); }
+.menu-btn { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.menu-btn span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: .3s; }
+
+/* ── HERO ── */
+#hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 8rem 2.5rem 5rem;
+  overflow: hidden;
+}
+.hero-canvas {
+  position: absolute; inset: 0; z-index: 0;
+}
+.hero-grid {
+  position: absolute; inset: 0; z-index: 0;
+  background-image:
+    linear-gradient(rgba(16,185,129,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16,185,129,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-glow {
+  position: absolute; z-index: 0;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 70%);
+  top: 50%; left: 60%; transform: translate(-50%,-50%);
+}
+.hero-content {
+  position: relative; z-index: 1;
+  max-width: 1100px; margin: 0 auto; width: 100%;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+}
+.hero-left { }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-size: .72rem; font-weight: 600; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--emerald);
+  border: 1px solid rgba(16,185,129,.3); padding: .3rem .85rem;
+  border-radius: 20px; margin-bottom: 1.5rem;
+  background: rgba(16,185,129,.06);
+}
+.hero-eyebrow::before {
+  content: ""; width: 6px; height: 6px;
+  background: var(--emerald); border-radius: 50%;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .5; transform: scale(1.3); }
+}
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 700; line-height: 1.05;
+  letter-spacing: -0.02em; color: var(--white);
+  margin-bottom: .6rem;
+}
+.hero-name .line2 { color: var(--emerald); font-style: italic; }
+.hero-title {
+  font-size: 1rem; color: var(--muted2); font-weight: 400;
+  margin-bottom: .4rem;
+}
+.hero-dept {
+  font-size: .85rem; color: var(--muted); margin-bottom: 2rem;
+}
+.hero-links { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 2.5rem; }
+.hero-link {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-size: .78rem; font-weight: 500;
+  padding: .42rem 1rem; border-radius: 8px;
+  border: 1px solid var(--border);
+  color: var(--muted2); background: var(--surface);
+  transition: all .2s;
+}
+.hero-link:hover {
+  border-color: var(--emerald); color: var(--emerald);
+  background: var(--emerald-glow); transform: translateY(-2px);
+}
+.hero-link svg { width: 14px; height: 14px; flex-shrink: 0; }
+.hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.hero-stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  position: relative; overflow: hidden;
+}
+.hero-stat::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--emerald-glow), transparent);
+  opacity: 0; transition: opacity .3s;
+}
+.hero-stat:hover::before { opacity: 1; }
+.stat-val {
+  font-family: var(--font-display);
+  font-size: 2.2rem; font-weight: 700; line-height: 1;
+  color: var(--amber); display: block;
+}
+.stat-lbl {
+  font-size: .68rem; text-transform: uppercase; letter-spacing: .1em;
+  color: var(--muted); margin-top: .3rem; display: block;
+}
+/* Hero Right – Photo card */
+.hero-right { display: flex; justify-content: center; }
+.photo-card {
+  position: relative; width: 340px;
+}
+.photo-card::before {
+  content: "";
+  position: absolute; inset: -2px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--emerald), var(--amber), var(--emerald));
+  animation: rotate-grad 4s linear infinite;
+  z-index: 0;
+}
+@keyframes rotate-grad {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+.photo-card-inner {
+  position: relative; z-index: 1;
+  background: var(--bg2); border-radius: 22px;
+  overflow: hidden;
+  padding: 2rem 2rem 1.5rem;
+}
+.photo-card img {
+  width: 140px; height: 140px; object-fit: cover; object-position: center top;
+  border-radius: 50%;
+  border: 3px solid var(--emerald);
+  display: block; margin: 0 auto 1.2rem;
+  box-shadow: 0 0 30px rgba(16,185,129,0.3);
+}
+.photo-card-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem; font-weight: 700;
+  text-align: center; color: var(--white);
+  margin-bottom: .2rem;
+}
+.photo-card-role { font-size: .78rem; color: var(--muted2); text-align: center; margin-bottom: 1.2rem; }
+.card-chips { display: flex; flex-wrap: wrap; gap: .4rem; justify-content: center; }
+.chip {
+  font-size: .68rem; font-weight: 500;
+  padding: .22rem .6rem; border-radius: 20px;
+  background: rgba(16,185,129,0.1); color: var(--emerald);
+  border: 1px solid rgba(16,185,129,0.25);
+}
+.chip.amber {
+  background: rgba(245,158,11,0.1); color: var(--amber);
+  border-color: rgba(245,158,11,0.25);
+}
+
+/* ── SECTION WRAPPER ── */
+section { position: relative; z-index: 1; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
+.section-pad { padding: 6rem 0; }
+.section-header { margin-bottom: 3rem; }
+.section-label {
+  font-size: .72rem; font-weight: 600; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--emerald);
+  display: flex; align-items: center; gap: .6rem;
+  margin-bottom: .8rem;
+}
+.section-label::after {
+  content: ""; flex: 1; height: 1px; max-width: 60px;
+  background: var(--emerald); opacity: .4;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700; color: var(--white);
+  line-height: 1.15;
+}
+.section-title em { color: var(--emerald); font-style: italic; }
+
+/* ── DIVIDER ── */
+.divider {
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+/* ── ABOUT ── */
+#about { background: var(--bg2); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.about-text p {
+  font-size: .96rem; color: var(--muted2); line-height: 1.85;
+  margin-bottom: 1.2rem;
+}
+.about-text p:last-child { margin-bottom: 0; }
+.about-text strong { color: var(--white); }
+.edu-timeline { display: flex; flex-direction: column; gap: 0; }
+.edu-item {
+  display: flex; gap: 1.2rem; align-items: flex-start;
+  padding-bottom: 1.6rem; position: relative;
+}
+.edu-item:not(:last-child)::after {
+  content: ""; position: absolute;
+  left: 18px; top: 36px; bottom: 0; width: 1px;
+  background: linear-gradient(to bottom, var(--emerald2), transparent);
+}
+.edu-dot {
+  width: 36px; height: 36px; flex-shrink: 0;
+  border-radius: 50%; border: 2px solid var(--emerald);
+  background: var(--bg2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .65rem; font-weight: 700; color: var(--emerald);
+  position: relative; z-index: 1;
+}
+.edu-body { flex: 1; }
+.edu-deg { font-weight: 600; color: var(--white); font-size: .9rem; margin-bottom: .18rem; }
+.edu-inst { font-size: .82rem; color: var(--emerald); margin-bottom: .12rem; }
+.edu-meta { font-size: .74rem; color: var(--muted); font-family: var(--font-mono); }
+
+/* ── RESEARCH AREAS ── */
+#research { background: var(--bg); }
+.research-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+.research-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.6rem;
+  transition: all .3s; cursor: default;
+  position: relative; overflow: hidden;
+}
+.research-card::after {
+  content: ""; position: absolute;
+  bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--emerald), var(--amber));
+  transform: scaleX(0); transition: transform .3s; transform-origin: left;
+}
+.research-card:hover { border-color: rgba(16,185,129,.3); transform: translateY(-4px); }
+.research-card:hover::after { transform: scaleX(1); }
+.rc-icon { font-size: 2rem; margin-bottom: .8rem; }
+.rc-title { font-size: .92rem; font-weight: 600; color: var(--white); margin-bottom: .5rem; }
+.rc-desc { font-size: .78rem; color: var(--muted); line-height: 1.6; }
+
+/* ── EXPERIENCE ── */
+#experience { background: var(--bg2); }
+.exp-timeline { position: relative; }
+.exp-timeline::before {
+  content: ""; position: absolute;
+  left: 110px; top: 0; bottom: 0; width: 1px;
+  background: linear-gradient(to bottom, var(--emerald2), rgba(16,185,129,0.1));
+}
+.exp-item {
+  display: flex; gap: 0; margin-bottom: 2.5rem;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.exp-item.visible { opacity: 1; transform: translateY(0); }
+.exp-year-col {
+  width: 110px; flex-shrink: 0;
+  text-align: right; padding-right: 2rem;
+  padding-top: .2rem;
+}
+.exp-year-badge {
+  font-family: var(--font-mono);
+  font-size: .68rem; color: var(--amber);
+  background: rgba(245,158,11,0.1);
+  border: 1px solid rgba(245,158,11,0.25);
+  padding: .2rem .5rem; border-radius: 6px;
+  white-space: nowrap;
+}
+.exp-dot-col {
+  position: relative; width: 0; flex-shrink: 0;
+}
+.exp-dot {
+  position: absolute; left: -6px; top: 6px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--emerald); border: 2px solid var(--bg2);
+  box-shadow: 0 0 10px rgba(16,185,129,0.5);
+}
+.exp-body { flex: 1; padding-left: 2rem; }
+.exp-role { font-size: .98rem; font-weight: 600; color: var(--white); margin-bottom: .15rem; }
+.exp-org { font-size: .82rem; color: var(--emerald); font-weight: 500; margin-bottom: .5rem; }
+.exp-desc { font-size: .83rem; color: var(--muted2); line-height: 1.65; }
+.exp-desc em { color: var(--amber); font-style: italic; }
+
+/* ── SKILLS ── */
+#skills { background: var(--bg); }
+.skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.skill-block {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.6rem;
+}
+.skill-block-title {
+  font-size: .72rem; text-transform: uppercase; letter-spacing: .1em;
+  color: var(--emerald); font-weight: 600; margin-bottom: 1rem;
+  display: flex; align-items: center; gap: .5rem;
+}
+.skill-block-title::before {
+  content: ""; width: 3px; height: 14px; background: var(--emerald); border-radius: 2px;
+}
+.skill-pills { display: flex; flex-wrap: wrap; gap: .4rem; }
+.skill-pill {
+  font-size: .75rem; font-family: var(--font-mono);
+  padding: .3rem .65rem; border-radius: 6px;
+  background: var(--bg2); color: var(--muted2);
+  border: 1px solid var(--border);
+  transition: all .2s; cursor: default;
+}
+.skill-pill:hover {
+  background: var(--emerald-glow); color: var(--emerald);
+  border-color: rgba(16,185,129,.35); transform: translateY(-2px);
+}
+
+/* ── PUBLICATIONS ── */
+#publications { background: var(--bg2); }
+.pub-tabs {
+  display: flex; gap: .6rem; margin-bottom: 2rem; flex-wrap: wrap;
+}
+.pub-tab {
+  padding: .45rem 1.1rem; border-radius: 8px; cursor: pointer;
+  font-size: .78rem; font-weight: 500;
+  border: 1px solid var(--border); color: var(--muted2);
+  background: var(--surface); transition: all .2s;
+}
+.pub-tab.active, .pub-tab:hover {
+  background: var(--emerald-glow); color: var(--emerald);
+  border-color: rgba(16,185,129,.3);
+}
+.pub-list { display: flex; flex-direction: column; gap: 1rem; }
+.pub-item {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.4rem 1.6rem;
+  transition: all .25s; border-left: 3px solid transparent;
+}
+.pub-item:hover { border-left-color: var(--emerald); transform: translateX(4px); }
+.pub-num {
+  font-family: var(--font-mono); font-size: .68rem; color: var(--muted);
+  margin-bottom: .4rem;
+}
+.pub-authors { font-size: .82rem; color: var(--muted2); margin-bottom: .3rem; font-weight: 400; }
+.pub-authors strong { color: var(--white); font-weight: 600; }
+.pub-title {
+  font-family: var(--font-display);
+  font-size: 1rem; font-weight: 600; font-style: italic;
+  color: var(--white); margin-bottom: .4rem; line-height: 1.4;
+}
+.pub-journal { font-size: .78rem; color: var(--muted); }
+.pub-meta { display: flex; align-items: center; gap: .6rem; margin-top: .6rem; }
+.if-badge {
+  font-family: var(--font-mono); font-size: .65rem; font-weight: 600;
+  padding: .18rem .5rem; border-radius: 5px;
+  background: rgba(245,158,11,0.15); color: var(--amber);
+  border: 1px solid rgba(245,158,11,0.3);
+}
+.year-tag {
+  font-size: .7rem; color: var(--muted);
+  font-family: var(--font-mono);
+}
+.hidden { display: none !important; }
+
+/* Book chapters */
+.book-item {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.2rem 1.5rem;
+  border-left: 3px solid transparent;
+  transition: all .25s;
+}
+.book-item:hover { border-left-color: var(--amber); }
+.book-chapter { font-size: .8rem; font-weight: 600; color: var(--amber); margin-bottom: .3rem; }
+.book-authors { font-size: .78rem; color: var(--muted2); margin-bottom: .25rem; }
+.book-title { font-family: var(--font-display); font-size: .95rem; font-style: italic; color: var(--white); margin-bottom: .25rem; }
+.book-source { font-size: .74rem; color: var(--muted); }
+
+/* ── CONFERENCES & TALKS ── */
+#activities { background: var(--bg); }
+.acts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.act-block {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.6rem;
+}
+.act-block-title {
+  font-size: .72rem; text-transform: uppercase; letter-spacing: .1em;
+  color: var(--amber); font-weight: 600; margin-bottom: 1.2rem;
+  display: flex; align-items: center; gap: .5rem;
+}
+.act-block-title::before {
+  content: ""; width: 3px; height: 14px; background: var(--amber); border-radius: 2px;
+}
+.act-list { list-style: none; display: flex; flex-direction: column; gap: .9rem; }
+.act-list li {
+  font-size: .82rem; color: var(--muted2); padding-left: 1rem; position: relative;
+  line-height: 1.55;
+}
+.act-list li::before {
+  content: ""; position: absolute; left: 0; top: .55em;
+  width: 5px; height: 5px; background: var(--emerald); border-radius: 50%;
+}
+.act-list li em { color: var(--amber); font-style: italic; }
+.act-list li strong { color: var(--white); }
+.talk-item { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+.talk-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.talk-role { font-size: .8rem; font-weight: 600; color: var(--white); }
+.talk-org { font-size: .78rem; color: var(--emerald); margin: .12rem 0; }
+.talk-year { font-family: var(--font-mono); font-size: .7rem; color: var(--amber); }
+.talk-desc { font-size: .78rem; color: var(--muted); margin-top: .25rem; }
+
+/* ── ACHIEVEMENTS ── */
+.ach-row {
+  display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem;
+}
+.ach-card {
+  background: var(--surface); border: 1px solid rgba(16,185,129,.2);
+  border-radius: var(--radius); padding: 1rem 1.4rem;
+  display: flex; align-items: center; gap: .8rem;
+}
+.ach-icon { font-size: 1.5rem; }
+.ach-text { font-size: .85rem; color: var(--muted2); }
+.ach-text strong { color: var(--white); display: block; font-size: .9rem; }
+
+/* ── CONTACT / FOOTER ── */
+#contact { background: var(--bg2); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+.contact-links { display: flex; flex-direction: column; gap: .8rem; }
+.contact-link {
+  display: flex; align-items: center; gap: .8rem;
+  font-size: .88rem; color: var(--muted2);
+  padding: .9rem 1.2rem;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); transition: all .2s;
+}
+.contact-link:hover {
+  border-color: var(--emerald); color: var(--emerald);
+  background: var(--emerald-glow); transform: translateX(4px);
+}
+.contact-link-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: var(--bg); display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0;
+}
+.contact-ids {
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.id-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.4rem;
+}
+.id-card-label { font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: .4rem; }
+.id-card-val { font-family: var(--font-mono); font-size: .82rem; color: var(--emerald); }
+.id-card-link { font-size: .8rem; color: var(--muted2); margin-top: .3rem; }
+.id-card-link a { color: var(--emerald); }
+footer {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  text-align: center; padding: 2rem;
+  font-size: .75rem; color: var(--muted);
+}
+footer span { color: var(--emerald); }
+
+/* ── FADE-IN ANIMATIONS ── */
+.fade-in {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ── MOBILE NAV ── */
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links {
+    position: fixed; top: 60px; left: 0; right: 0;
+    flex-direction: column; gap: 0;
+    background: var(--bg2); border-bottom: 1px solid var(--border);
+    max-height: 0; overflow: hidden; transition: max-height .3s;
+  }
+  .nav-links.open { max-height: 400px; }
+  .nav-links a { padding: .9rem 1.5rem; border-bottom: 1px solid var(--border); display: block; }
+  .menu-btn { display: flex; }
+  .hero-content { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+  .hero-right { order: -1; }
+  .hero-links { justify-content: center; }
+  .hero-stats { grid-template-columns: repeat(3,1fr); }
+  .about-grid, .skills-grid, .research-grid, .acts-grid, .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .research-grid { grid-template-columns: 1fr 1fr; }
+  .exp-timeline::before { left: 80px; }
+  .exp-year-col { width: 80px; }
+  #hero { padding: 7rem 1.5rem 4rem; }
+  .container { padding: 0 1.5rem; }
+}
+@media (max-width: 560px) {
+  .research-grid { grid-template-columns: 1fr; }
+  .hero-stats { grid-template-columns: repeat(3,1fr); gap: .5rem; }
+  .stat-val { font-size: 1.6rem; }
+  .photo-card { width: 280px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">Dr. S. <span>Sabarinathan</span></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#activities">Activities</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="menu-btn" id="menuBtn">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <canvas class="hero-canvas" id="heroCanvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Plant Geneticist &amp; Computational Biologist</div>
+      <h1 class="hero-name">Dr. S.<br><span class="line2">Sabarinathan</span></h1>
+      <p class="hero-title">Assistant Professor · Genetics &amp; Plant Breeding</p>
+      <p class="hero-dept">M.S. Swaminathan School of Agriculture, Centurion University of Technology &amp; Management, Gajapati, Odisha</p>
+      <div class="hero-links">
+        <a class="hero-link" href="mailto:sabarinathan121994@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Gmail
+        </a>
+        <a class="hero-link" href="mailto:sabarinathan.s@cutm.ac.in">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          CUTM Mail
+        </a>
+        <a class="hero-link" href="https://scholar.google.com/citations?user=7co1iS8AAAAJ&hl=en" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M6 20.5a6 6 0 0112 0"/><path d="M12 2L2 8.5l10 5 10-5z"/></svg>
+          Google Scholar
+        </a>
+        <a class="hero-link" href="https://orcid.org/0000-0002-8740-7860" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 8h8M8 12h8M8 16h6"/></svg>
+          ORCID
+        </a>
+        <a class="hero-link" href="tel:+917200210264">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.67A2 2 0 013 1.16h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          +91 7200210264
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="stat-val" data-target="15">15+</span>
+          <span class="stat-lbl">Publications</span>
+        </div>
+        <div class="hero-stat">
+          <span class="stat-val" data-target="4">4+</span>
+          <span class="stat-lbl">Yrs Research</span>
+        </div>
+        <div class="hero-stat">
+          <span class="stat-val">6.3</span>
+          <span class="stat-lbl">Top Journal IF</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="photo-card">
+        <div class="photo-card-inner">
+          <img src="data:image/jpeg;base64,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" alt="Dr. S. Sabarinathan">
+          <div class="photo-card-name">Dr. S. Sabarinathan</div>
+          <div class="photo-card-role">Ph.D. · Seed Science &amp; Technology</div>
+          <div class="card-chips">
+            <span class="chip">Genomics</span>
+            <span class="chip">CRISPR</span>
+            <span class="chip amber">GWAS</span>
+            <span class="chip">Rice Breeding</span>
+            <span class="chip amber">Bioinformatics</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section-pad">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">About Me</div>
+      <h2 class="section-title">Advancing Rice Improvement<br>Through <em>Genomics & Computation</em></h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <p>Dr. S. Sabarinathan is an <strong>Assistant Professor of Genetics and Plant Breeding</strong> at the M.S. Swaminathan School of Agriculture, Centurion University of Technology and Management, Gajapati, Odisha. He earned his Ph.D. from Odisha University of Agriculture and Technology in collaboration with ICAR–Central Rice Research Institute.</p>
+        <p>With more than <strong>four years of research experience</strong> in nationally funded projects, he has authored over <strong>15 peer-reviewed publications</strong> in Scopus/SCI journals, with impact factors reaching up to 6.3. His research integrates advanced <strong>genomic, bioinformatic, and molecular approaches</strong> to accelerate rice improvement for abiotic stress tolerance.</p>
+        <p>He is qualified ICAR-NET in Seed Science &amp; Technology (2019) and has contributed chapters to Springer Singapore publications on rice bioinformatics and genomics.</p>
+      </div>
+      <div class="edu-timeline fade-in">
+        <div class="edu-item">
+          <div class="edu-dot">PhD</div>
+          <div class="edu-body">
+            <div class="edu-deg">Ph.D. — Seed Science &amp; Technology</div>
+            <div class="edu-inst">ICAR-CRRI / OUAT, Odisha</div>
+            <div class="edu-meta">2021 – 2025 &nbsp;·&nbsp; OGPA: 8.50</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-dot">MSc</div>
+          <div class="edu-body">
+            <div class="edu-deg">M.Sc. — Seed Science &amp; Technology</div>
+            <div class="edu-inst">Annamalai University, Tamil Nadu</div>
+            <div class="edu-meta">2016 – 2018 &nbsp;·&nbsp; OGPA: 8.64</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-dot">BSc</div>
+          <div class="edu-body">
+            <div class="edu-deg">B.Sc. — Agriculture</div>
+            <div class="edu-inst">Annamalai University, Tamil Nadu</div>
+            <div class="edu-meta">2012 – 2016 &nbsp;·&nbsp; OGPA: 7.34</div>
+          </div>
+        </div>
+        <div class="ach-row">
+          <div class="ach-card">
+            <div class="ach-icon">🏅</div>
+            <div class="ach-text">
+              <strong>ICAR-NET Qualified</strong>
+              Seed Science &amp; Technology (2019)
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- RESEARCH AREAS -->
+<section id="research" class="section-pad">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">Research Focus</div>
+      <h2 class="section-title">Core <em>Research Areas</em></h2>
+    </div>
+    <div class="research-grid">
+      <div class="research-card fade-in">
+        <div class="rc-icon">🧬</div>
+        <div class="rc-title">Genomics &amp; Haplotype Breeding</div>
+        <div class="rc-desc">Haplotype-based analysis of key rice genes for abiotic stress tolerance using 3K SNP panel data.</div>
+      </div>
+      <div class="research-card fade-in">
+        <div class="rc-icon">✂️</div>
+        <div class="rc-title">CRISPR / Genome Editing</div>
+        <div class="rc-desc">CRISPR-Cas9 based editing of OsTPP7 gene for regulating germination under submergence in rice.</div>
+      </div>
+      <div class="research-card fade-in">
+        <div class="rc-icon">📊</div>
+        <div class="rc-title">QTL Mapping &amp; GWAS</div>
+        <div class="rc-desc">Genome-wide association studies and QTL identification for yield, stress tolerance, and grain quality traits.</div>
+      </div>
+      <div class="research-card fade-in">
+        <div class="rc-icon">🔬</div>
+        <div class="rc-title">Transcriptomics &amp; Proteomics</div>
+        <div class="rc-desc">Multi-omics approaches to decode molecular mechanisms of crop stress responses and resistance.</div>
+      </div>
+      <div class="research-card fade-in">
+        <div class="rc-icon">🌾</div>
+        <div class="rc-title">Molecular Breeding</div>
+        <div class="rc-desc">SSR, SNP, and marker-assisted selection (MAS) strategies for accelerated rice variety development.</div>
+      </div>
+      <div class="research-card fade-in">
+        <div class="rc-icon">💻</div>
+        <div class="rc-title">Bioinformatics &amp; Big Data</div>
+        <div class="rc-desc">Analysis of 3K Rice Genome Project SNP data for population structure, diversity, and breeding applications.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="section-pad">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">Career Timeline</div>
+      <h2 class="section-title">Research &amp; <em>Academic Experience</em></h2>
+    </div>
+    <div class="exp-timeline">
+      <div class="exp-item">
+        <div class="exp-year-col"><span class="exp-year-badge">2026–Present</span></div>
+        <div class="exp-dot-col"><div class="exp-dot"></div></div>
+        <div class="exp-body">
+          <div class="exp-role">Assistant Professor</div>
+          <div class="exp-org">Dept. of Genetics &amp; Plant Breeding, M.S. Swaminathan School of Agriculture, Centurion University, Gajapati, Odisha</div>
+          <div class="exp-desc">Teaching UG/PG courses in Plant Breeding and Genomics. Conducting research in rice genomics, GWAS, and genome editing.</div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-year-col"><span class="exp-year-badge">2022–2024</span></div>
+        <div class="exp-dot-col"><div class="exp-dot"></div></div>
+        <div class="exp-body">
+          <div class="exp-role">Senior Research Fellow</div>
+          <div class="exp-org">Crop Improvement Division, ICAR-CRRI, Cuttack</div>
+          <div class="exp-desc">ICAR-funded project: <em>Transformative Strategy for Controlling Rice Disease in Developing Countries.</em> Molecular breeding, GWAS and genomics of rice blast resistance. Guide: Dr. Devanna BN, Scientist.</div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-year-col"><span class="exp-year-badge">2021–2025</span></div>
+        <div class="exp-dot-col"><div class="exp-dot"></div></div>
+        <div class="exp-body">
+          <div class="exp-role">Ph.D. Researcher</div>
+          <div class="exp-org">ICAR-CRRI / Odisha University of Agriculture &amp; Technology</div>
+          <div class="exp-desc">Thesis: <em>Genetic diversity and CRISPR-based editing of Trehalose-6-phosphate phosphatase 7 (OsTPP7) gene in rice (Oryza sativa L.) for regulating germination under submergence.</em> Guide: Dr. Priyadarsini Sanghamitra, Senior Scientist, ICAR-CRRI.</div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-year-col"><span class="exp-year-badge">2018–2020</span></div>
+        <div class="exp-dot-col"><div class="exp-dot"></div></div>
+        <div class="exp-body">
+          <div class="exp-role">Senior Research Fellow</div>
+          <div class="exp-org">Crop Improvement Division, ICAR-CRRI, Cuttack</div>
+          <div class="exp-desc">ICAR project: <em>Development of high-yielding water and labor saving rice varieties for dry direct seeded aerobic conditions utilizing recent discoveries on traits, QTLs, genes and genomic technologies.</em> Guide: Dr. Anandan A, Principal Scientist.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills" class="section-pad">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">Technical Expertise</div>
+      <h2 class="section-title">Tools &amp; <em>Technologies</em></h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-block fade-in">
+        <div class="skill-block-title">Programming &amp; Statistics</div>
+        <div class="skill-pills">
+          <span class="skill-pill">R</span>
+          <span class="skill-pill">SPSS</span>
+          <span class="skill-pill">agricolae</span>
+          <span class="skill-pill">MendelianRandomization</span>
+          <span class="skill-pill">metan</span>
+        </div>
+      </div>
+      <div class="skill-block fade-in">
+        <div class="skill-block-title">Data Visualization</div>
+        <div class="skill-pills">
+          <span class="skill-pill">ggplot2</span>
+          <span class="skill-pill">Tidyplots</span>
+          <span class="skill-pill">ggpubr</span>
+          <span class="skill-pill">dplyr</span>
+          <span class="skill-pill">GraphPad Prism</span>
+          <span class="skill-pill">Origin</span>
+        </div>
+      </div>
+      <div class="skill-block fade-in">
+        <div class="skill-block-title">Genomics Tools</div>
+        <div class="skill-pills">
+          <span class="skill-pill">GAPIT</span>
+          <span class="skill-pill">Tassel</span>
+          <span class="skill-pill">Plink</span>
+          <span class="skill-pill">STRUCTURE</span>
+          <span class="skill-pill">MEGA</span>
+          <span class="skill-pill">Darwin</span>
+          <span class="skill-pill">QTL IciMapping</span>
+          <span class="skill-pill">Flapjack</span>
+        </div>
+      </div>
+      <div class="skill-block fade-in">
+        <div class="skill-block-title">Wet Lab Techniques</div>
+        <div class="skill-pills">
+          <span class="skill-pill">gRNA Design</span>
+          <span class="skill-pill">Cloning</span>
+          <span class="skill-pill">DNA Isolation</span>
+          <span class="skill-pill">Plasmid Isolation</span>
+          <span class="skill-pill">qRT-PCR</span>
+          <span class="skill-pill">ImageJ</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PUBLICATIONS -->
+<section id="publications" class="section-pad">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">Scholarly Output</div>
+      <h2 class="section-title">Publications &amp; <em>Book Chapters</em></h2>
+    </div>
+    <div class="pub-tabs fade-in">
+      <button class="pub-tab active" onclick="filterPubs('articles', this)">Research Articles</button>
+      <button class="pub-tab" onclick="filterPubs('chapters', this)">Book Chapters</button>
+      <button class="pub-tab" onclick="filterPubs('communications', this)">Communications</button>
+    </div>
+
+    <!-- ARTICLES -->
+    <div id="pub-articles" class="pub-list">
+      <div class="pub-item fade-in">
+        <div class="pub-num">#01 · 2026</div>
+        <div class="pub-authors"><strong>Selvaraj Sabarinathan</strong>, Subhashree Nayak, Parameswaran Chidambaranathan, Priyadarsini Sanghamitra, et al.</div>
+        <div class="pub-title">Natural Variation in OsTPP7 Affects the Root Traits in Combined Germination Under Submergence and Nutrient Deficiency in indica Rice.</div>
+        <div class="pub-journal">Tropical Plant Biology (2026): 5.</div>
+        <div class="pub-meta"><span class="if-badge">IF: 1.7</span><span class="year-tag">2026</span></div>
+      </div>
+      <div class="pub-item fade-in">
+        <div class="pub-num">#02 · 2025</div>
+        <div class="pub-authors"><strong>Selvaraj Sabarinathan</strong>, Parameswaran Chidambaranathan, Goutam Kumar Dash, Priyadarsini Sanghamitra, et al.</div>
+        <div class="pub-title">Long-Range Admixture Linkage Disequilibrium and Allelic Responses of Sub1 and TPP7 under Consecutive Stresses in Rice Validated Through Mendelian Randomization.</div>
+        <div class="pub-journal">Rice Science (2025) 32(5): 704–716.</div>
+        <div class="pub-meta"><span class="if-badge">IF: 6.1</span><span class="year-tag">2025</span></div>
+      </div>
+      <div class="pub-item fade-in">
+        <div class="pub-num">#03 · 2025</div>
+        <div class="pub-authors">Nayak G, Parameswaran C, <strong>Selvaraj S</strong>, Nayak I, Balasubramaniasai C, Katara J, &amp; Samantaray S.</div>
+        <div class="pub-title">Pleiotropic effects of violaxanthin de-epoxidase (OsVDE) haplotypes in regulation of spikelet fertility and drought response in rice.</div>
+        <div class="pub-journal">Plant Physiology and Biochemistry (2025): 110894.</div>
+        <div class="pub-meta"><span class="if-badge">IF: 5.7</span><span class="year-tag">2025</span></div>
+      </div>
+      <div class="pub-item fade-in">
+        <div class="pub-num">#04 · 2025</div>
+        <div class="pub-authors">Karmakar S, <strong>Selvaraj S</strong><sup>#</sup>, Mondal S, Gayen D, &amp; Baig MJ.</div>
+        <div class="pub-title">Multi-omics reveals DEAD-box RNA helicase 20 as key protein enhancing wilt resistance in transgenic chickpea.</div>
+        <div class="pub-journal">Plant Cell Reports (2025) 44(12): 289. (#Equally contributed)</div>
+        <div class="pub-meta"><span class="if-badge">IF: 4.5</span><span class="year-tag">2025</span></div>
+      </div>
+      <div class="pub-item fade-in">
+        <div class="pub-num">#05 · 2025</div>
+        <div class="pub-authors">Beena R, Nalishma R, Sah RP, <strong>Selvaraj S</strong>, Kiran AG, &amp; Dhanyalakshmi KH.</div>
+        <div class="pub-title">Comparative Transcriptome Analysis Uncovers Metabolic Pathways and Sugar Signalling Mechanisms Underpinning Heat Stress Tolerance in Rice Genotypes.</div>
+        <div class="pub-journal">Journal of Plant Growth Regulation (2025): 1–16.</div>
+        <div class="pub-meta"><span class="if-badge">IF: 4.4</span><span class="year-tag">2025</span></div>
+      </div>
+      <div class="pub-item fade-in">
+        <div class="pub-num">#06 · 2025</div>
+        <div class="pub-authors">Muduli BC, <strong>Sabarinathan Selvaraj</strong>, Shivraj Sahu, Subhadarshani Dhall, Nibedita Swain, et al.</div>
+        <div class="pub-title">Haplotype characterization of phosphorus homeostasis gene, SPX-MFS3 under combination of low nitrogen and phosphorus conditions in indica rice at seedling stage.</div>
+        <div class="pub-journal">3 Biotech (2025): 188.</div>
+        <div class="pub-meta"><span class="if-badge">IF: 2.9</span><span class="year-tag">2025</span></div>
+      </div>
+      <div class="pub-item fade-in">
+        <div class="pub-num">#07 · 2025</div>
+        <div class="pub-authors">Chidambaranathan P, Nayak G, Jeughale KP, <strong>Selvaraj S</strong>, Balasubramania Sai C, Awaji S, … &amp; Samantaray S.</div>
+        <div class="pub-title">OsNCED2, OsNAM, and OsDEC genes association with vegetative stage drought stress in rice validated through Mendelian randomization.</div>
+        <div class="pub-journal">The Nucleus (2025): 1–14.</div>
+        <div class="pub-meta"><span class="if-badge">IF: 2.6</span><span class="year-tag">2025</span></div>
+      </div>
+      <div class="pub-item fade-in">
+        <div class="pub-num">#08 · 2025</div>
+        <div class="pub-authors">Kiran K, <strong>Sabarinathan Selvaraj</strong>, C. Parameswaran, Cayalvizhi Balasubramaniasai, et al.</div>
+        <div class="pub-title">Genome-wide association analysis and candidate genes identification for pericarp color in rice (Oryza sativa L.).</div>
+        <div class="pub-journal">Tropical Plant Biology (2025): 8.</div>
+        <div class="pub-meta"><span class="if-badge">IF: 1.8</span><span class="year-tag">2025</span></div>
+      </div>
+      <div class="pub-item fade-in">
+        <div class="pub-num">#09 · 2024</div>
+        <div class="pub-authors">Karmakar S, <strong>Selvaraj S</strong><sup>#</sup>, Gayen D, &amp; Baig MJ.</div>
+        <div class="pub-title">A Detailed Proteomics and Metabolomics Landscape Sheds Light on the Mechanistic Insights Into the Resistance Response of Transgenic Pigeon Pea Against Wilt Stress.</div>
+        <div class="pub-journal">Plant, Cell &amp; Environment (2024). (#Equally contributed)</div>
+        <div class="pub-meta"><span class="if-badge">IF: 6.3</span><span class="year-tag">2024</span></div>
+      </div>
+      <div class="pub-item fade-in">
+        <div class="pub-num">#10 · 2024</div>
+        <div class="pub-authors">Sunitha NC, Sampangi Ramesh, Hirenalluru Chandappa Lohithaswa, <strong>Selvaraj Sabarinathan</strong>, and Chandrappa Anilkumar.</div>
+        <div class="pub-title">Consensus QTL map deciphered genes and pathways regulating tolerance to post-flowering diseases in maize.</div>
+        <div class="pub-journal">Annals of Applied Biology (2024): 288–303.</div>
+        <div class="pub-meta"><span class="if-badge">IF: 2.2</span><span class="year-tag">2024</span></div>
+      </div>
+      <div class="pub-item fade-in">
+        <div class="pub-num">#11 · 2024</div>
+        <div class="pub-authors">Swain N, Raj Kishore Sahoo, Kishor P. Jeughale, Suman Sarkar, <strong>Sabarinathan Selvaraj</strong>, C. Parameswaran, et al.</div>
+        <div class="pub-title">Rice homolog of Arabidopsis Xylem NAC domain 1 (OsXND1), a NAC transcription factor regulates drought stress responsive root system architecture in indica rice.</div>
+        <div class="pub-journal">Molecular Genetics and Genomics (2024): 94.</div>
+        <div class="pub-meta"><span class="if-badge">IF: 2.1</span><span class="year-tag">2024</span></div>
+      </div>
+      <div class="pub-item fade-in">
+        <div class="pub-num">#12 · 2024</div>
+        <div class="pub-authors">Devanna BN, Sucharita S, Sunitha NC, Anilkumar C, Singh PK, Pramesh D … <strong>Selvaraj Sabarinathan</strong> … &amp; Sharma TR.</div>
+        <div class="pub-title">Refinement of rice blast disease resistance QTLs and gene networks through meta-QTL analysis.</div>
+        <div class="pub-journal">Scientific Reports (2024): 16458.</div>
+        <div class="pub-meta"><span class="if-badge">IF: 3.8</span><span class="year-tag">2024</span></div>
+      </div>
+      <div class="pub-item fade-in">
+        <div class="pub-num">#13 · 2025</div>
+        <div class="pub-authors">Nayak G, Parameswaran C, Vaidya N, Parida M, <strong>Sabarinathan S</strong>, Chaudhari P, … &amp; Katara JL.</div>
+        <div class="pub-title">Genome-wide association analysis in identification of superior haplotypes for vegetative stage drought stress tolerance in rice.</div>
+        <div class="pub-journal">Physiology and Molecular Biology of Plants (2025): 1–18.</div>
+        <div class="pub-meta"><span class="if-badge">IF: 3.3</span><span class="year-tag">2025</span></div>
+      </div>
+      <div class="pub-item fade-in">
+        <div class="pub-num">#14 · 2022</div>
+        <div class="pub-authors">Anandan A, Siddharth Panda, <strong>S. Sabarinathan</strong>, Anthony J. Travis, Gareth J. Norton, and Adam H. Price.</div>
+        <div class="pub-title">Superior Haplotypes for Early Root Vigor Traits in Rice Under Dry Direct Seeded Low Nitrogen Condition Through Genome Wide Association Mapping.</div>
+        <div class="pub-journal">Frontiers in Plant Science (2022).</div>
+        <div class="pub-meta"><span class="if-badge">IF: 4.8</span><span class="year-tag">2022</span></div>
+      </div>
+      <div class="pub-item fade-in">
+        <div class="pub-num">#15 · 2022</div>
+        <div class="pub-authors">Anandan A, Ranjitkumar Nagireddy, <strong>Selvaraj Sabarinathan</strong>, Bishal Binaya Bhatta, Anumalla Mahender, et al.</div>
+        <div class="pub-title">Multi-trait association study identifies loci associated with tolerance of low phosphorus in Oryza sativa and its wild relatives.</div>
+        <div class="pub-journal">Scientific Reports (2022): 4089.</div>
+        <div class="pub-meta"><span class="if-badge">IF: 4.3</span><span class="year-tag">2022</span></div>
+      </div>
+      <div style="text-align:center; margin-top:1.5rem;">
+        <a href="https://scholar.google.com/citations?user=7co1iS8AAAAJ&hl=en" target="_blank" class="hero-link" style="display:inline-flex;">
+          View All on Google Scholar ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- BOOK CHAPTERS -->
+    <div id="pub-chapters" class="hidden pub-list">
+      <div class="book-item fade-in">
+        <div class="book-chapter">Chapter · Springer Singapore</div>
+        <div class="book-authors">Gayatri Gouda, <strong>Sabarinathan S</strong><sup>#</sup>, Ravindra Donde, et al.</div>
+        <div class="book-title">Introduction of the Databases of Rice</div>
+        <div class="book-source">Bioinformatics in Rice Research Theories and Techniques · ISBN: 978-981-16-3993-7</div>
+      </div>
+      <div class="book-item fade-in">
+        <div class="book-chapter">Chapter · Springer Singapore</div>
+        <div class="book-authors">Manoj Kumar Gupta, N Rajesh, <strong>Sabarinathan S</strong><sup>#</sup>, Gayatri Gouda, et al.</div>
+        <div class="book-title">Computational Approaches in Identifying Long Non-Coding RNA</div>
+        <div class="book-source">Bioinformatics in Rice Research Theories and Techniques · ISBN: 978-981-16-3993-7</div>
+      </div>
+      <div class="book-item fade-in">
+        <div class="book-chapter">Chapter · Springer Singapore</div>
+        <div class="book-authors">Manoj Kumar Gupta, Gayatri Gouda, <strong>Sabarinathan S</strong><sup>#</sup>, Ravindra Donde, et al.</div>
+        <div class="book-title">Brief Insight into The Evolutionary History and Domestication of Wild Rice Relatives</div>
+        <div class="book-source">Bioinformatics in Rice Research Theories and Techniques · ISBN: 978-981-16-3993-7</div>
+      </div>
+      <div class="book-item fade-in">
+        <div class="book-chapter">Chapter · Springer Singapore</div>
+        <div class="book-authors">Gayatri Gouda, Manoj Kumar Gupta, <strong>Sabarinathan S</strong><sup>#</sup>, Ravindra Donde, et al.</div>
+        <div class="book-title">The CRISPR Technology and Application in Rice</div>
+        <div class="book-source">Applications of Bioinformatics in Rice Research · ISBN: 978-981-16-3997-5</div>
+      </div>
+      <div class="book-item fade-in">
+        <div class="book-chapter">Chapter · Springer Singapore</div>
+        <div class="book-authors">Gayatri Gouda, Manoj Kumar Gupta, Ravindra Donde, <strong>Sabarinathan S</strong><sup>#</sup>, et al.</div>
+        <div class="book-title">Computational Epigenetics in Rice Research</div>
+        <div class="book-source">Applications of Bioinformatics in Rice Research · ISBN: 978-981-16-3997-5</div>
+      </div>
+      <div class="book-item fade-in">
+        <div class="book-chapter">Chapter · Springer Singapore</div>
+        <div class="book-authors">Manoj Kumar Gupta, Gayatri Gouda, <strong>Sabarinathan S</strong><sup>#</sup>, Ravindra Donde, et al.</div>
+        <div class="book-title">3000 Genome Project — A Brief Insight</div>
+        <div class="book-source">Bioinformatics in Rice Research Theories and Techniques · ISBN: 978-981-16-3993-7</div>
+      </div>
+      <div class="book-item fade-in">
+        <div class="book-chapter">Chapter · Springer Singapore</div>
+        <div class="book-authors">N Rajesh, Manoj Kumar Gupta, Gayatri Gouda, Ravindra Donde, <strong>Sabarinathan S</strong><sup>#</sup>, et al.</div>
+        <div class="book-title">Plant Pathogen Co-Evolution in Rice</div>
+        <div class="book-source">Applications of Bioinformatics in Rice Research · ISBN: 978-981-16-3997-5</div>
+      </div>
+      <div class="book-item fade-in">
+        <div class="book-chapter">Chapter · Springer Singapore</div>
+        <div class="book-authors">Gayatri Gouda, <strong>Sabarinathan S</strong>, Manoj Kumar Gupta, Ravindra Donde, et al.</div>
+        <div class="book-title">Quantitative Trait Locus Mapping in Rice</div>
+        <div class="book-source">Applications of Bioinformatics in Rice Research · ISBN: 978-981-16-3997-5</div>
+      </div>
+      <div class="book-item fade-in">
+        <div class="book-chapter">Chapter · Springer Singapore</div>
+        <div class="book-authors">Ravindra Donde, Gayatri Gouda, <strong>Sabarinathan S</strong>, Manoj Kumar Gupta, et al.</div>
+        <div class="book-title">Artificial Intelligence and Machine Learning in Rice Research</div>
+        <div class="book-source">Applications of Bioinformatics in Rice Research · ISBN: 978-981-16-3997-5</div>
+      </div>
+      <div class="book-item fade-in">
+        <div class="book-chapter">Chapter · Springer Singapore</div>
+        <div class="book-authors">Gayatri Gouda, Ravindra Donde, <strong>Sabarinathan S</strong>, Manoj Kumar Gupta, et al.</div>
+        <div class="book-title">Computational Approaches Towards Decoding the Extra Chromosomal Genome of Rice</div>
+        <div class="book-source">Applications of Bioinformatics in Rice Research · ISBN: 978-981-16-3997-5</div>
+      </div>
+      <div class="book-item fade-in">
+        <div class="book-chapter">Chapter · Springer Singapore</div>
+        <div class="book-authors">Manoj Kumar Gupta, Gayatri Gouda, <strong>Sabarinathan S</strong>, Ravindra Donde, et al.</div>
+        <div class="book-title">Structural Proteomics (Ch-11) · Gene Ontology and Pathway Enrichment Analysis (Ch-12) · Mapping Algorithms in High-Throughput Sequencing (Ch-14) · Phylogenetic Analysis (Ch-9) · Microsatellite Markers from Whole Genome and Transcriptomic Sequences (Ch-18)</div>
+        <div class="book-source">Bioinformatics in Rice Research Theories and Techniques · ISBN: 978-981-16-3993-7</div>
+      </div>
+      <div class="book-item fade-in">
+        <div class="book-chapter">Chapter · CRC Press</div>
+        <div class="book-authors">Karmakar, Subhasis, and <strong>Sabarinathan Selvaraj</strong>.</div>
+        <div class="book-title">MicroRNAs: Mastering Epigenetic Regulation in Plant Stress Responses</div>
+        <div class="book-source">Epigenetic Regulations in Plants, CRC Press, pp. 263–276.</div>
+      </div>
+    </div>
+
+    <!-- SHORT COMMUNICATIONS -->
+    <div id="pub-communications" class="hidden pub-list">
+      <div class="pub-item fade-in">
+        <div class="pub-authors">Karmakar S, Avinash SP, <strong>Selvaraj S.</strong>, &amp; Baig, M. J. (2025).</div>
+        <div class="pub-title">Solving the Defense–Yield Dilemma in Crop Plants.</div>
+        <div class="pub-journal">Plant, Cell &amp; Environment.</div>
+        <div class="pub-meta"><span class="if-badge">IF: 6.3</span><span class="year-tag">2025</span></div>
+      </div>
+      <div class="pub-item fade-in">
+        <div class="pub-authors">Karmakar, Subhasis, S. P. Avinash, and <strong>Sabarinathan Selvaraj</strong>.</div>
+        <div class="pub-title">Breaking the Yield–Immunity Trade-Off: OsPIL1 Integrates Light Signals to Coordinate Rice Growth and Blast Resistance, and Its Breeding Implications.</div>
+        <div class="pub-journal">Plant, Cell &amp; Environment (2026).</div>
+        <div class="pub-meta"><span class="if-badge">IF: 6.3</span><span class="year-tag">2026</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ACTIVITIES -->
+<section id="activities" class="section-pad">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">Outreach &amp; Engagement</div>
+      <h2 class="section-title">Conferences, Talks &amp; <em>Training</em></h2>
+    </div>
+    <div class="acts-grid">
+      <div class="act-block fade-in">
+        <div class="act-block-title">Conference Presentations</div>
+        <ul class="act-list">
+          <li>OsTPP7 Regulates Culm Length in Rice Under Aerobic and Flooded Condition — <em>Second Indian Rice Congress (SIRC-2023)</em>, ICAR-NRRI, Cuttack (Feb 2023)</li>
+          <li>Feature Importance and Association of SNPs and Indels with Grain Length of OsPPKL1 Gene Using Supervised ML Models — <em>ARRW Diamond Jubilee National Symposium</em>, ICAR-NRRI, Cuttack (Dec 2021)</li>
+          <li>Studies on genetic diversity in rice genotypes grown over two seasons — <em>ICRSPSR-2018</em>, Dept. of Botany, Annamalai University, Tamil Nadu (Mar 2018)</li>
+          <li>Genetic diversity in medium duration rice based on yield and grain quality characters — <em>3rd ARRW International Symposium</em>, Cuttack (Feb 2018)</li>
+          <li>Gene Effects for Grain Yield and Component Characters in Rice — <em>National Conference</em>, Dept. of Genetics &amp; Plant Breeding, Annamalai University (Mar 2017)</li>
+        </ul>
+      </div>
+      <div class="act-block fade-in">
+        <div class="act-block-title">Resource Person &amp; Invited Talks</div>
+        <div class="talk-item">
+          <div class="talk-role">Resource Person</div>
+          <div class="talk-org">ICAR Sponsored Summer School — <em>Breeding Modernization to Enhance Substantial Genetic Gain in Crop Plants</em></div>
+          <div class="talk-year">January 2025</div>
+          <div class="talk-desc">ICAR-Central Rice Research Institute, Cuttack, Odisha (9–29 January 2025)</div>
+        </div>
+        <div class="talk-item">
+          <div class="talk-role">Resource Person</div>
+          <div class="talk-org">Hands-on Genome-wide Association Mapping Workshop</div>
+          <div class="talk-year">November 2025</div>
+          <div class="talk-desc">M.S. Swaminathan School of Agriculture, Centurion University, Paralakhemundi, Odisha (17–19 Nov 2025)</div>
+        </div>
+      </div>
+      <div class="act-block fade-in">
+        <div class="act-block-title">Training &amp; Workshops</div>
+        <ul class="act-list">
+          <li><strong>NAHEP &amp; CAAST Training</strong> — CRISPR-based Plant Genome Editing: Tools and Techniques, ICAR-IARI, New Delhi (Oct 2022)</li>
+          <li><strong>HIDA Virtual ML Summer School</strong> — Reproducible Scientific Analysis, Helmholtz Information &amp; Data Science Academy, Berlin (Jul 2021)</li>
+          <li><strong>Refresher Course</strong> — Statistical Tools and Techniques for Agricultural Data, CCS HAU, Hisar (Jul 2020)</li>
+          <li><strong>Online Workshop</strong> — Modern Methodologies in Statistical Data Analysis for Effective Agricultural Research, UAS Raichur (Jul 2020)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact" class="section-pad">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">Get in Touch</div>
+      <h2 class="section-title">Connect &amp; <em>Collaborate</em></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-links fade-in">
+        <a class="contact-link" href="mailto:sabarinathan121994@gmail.com">
+          <div class="contact-link-icon">✉️</div>
+          sabarinathan121994@gmail.com
+        </a>
+        <a class="contact-link" href="mailto:sabarinathan.s@cutm.ac.in">
+          <div class="contact-link-icon">🏫</div>
+          sabarinathan.s@cutm.ac.in
+        </a>
+        <a class="contact-link" href="tel:+917200210264">
+          <div class="contact-link-icon">📞</div>
+          +91 7200210264
+        </a>
+        <a class="contact-link" href="https://scholar.google.com/citations?user=7co1iS8AAAAJ&hl=en" target="_blank">
+          <div class="contact-link-icon">🎓</div>
+          Google Scholar Profile ↗
+        </a>
+        <a class="contact-link" href="https://orcid.org/0000-0002-8740-7860" target="_blank">
+          <div class="contact-link-icon">🔬</div>
+          ORCID: 0000-0002-8740-7860 ↗
+        </a>
+      </div>
+      <div class="contact-ids fade-in">
+        <div class="id-card">
+          <div class="id-card-label">Affiliation</div>
+          <div class="id-card-val">Dept. of Genetics &amp; Plant Breeding</div>
+          <div class="id-card-link">M.S. Swaminathan School of Agriculture<br>Centurion University of Technology &amp; Management<br>Gajapati, Odisha, India</div>
+        </div>
+        <div class="id-card">
+          <div class="id-card-label">Research Profiles</div>
+          <div class="id-card-link">
+            <a href="https://scholar.google.com/citations?user=7co1iS8AAAAJ&hl=en" target="_blank">Google Scholar ↗</a> &nbsp;·&nbsp;
+            <a href="https://orcid.org/0000-0002-8740-7860" target="_blank">ORCID ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <span>Dr. S. Sabarinathan</span> · Dept. of Genetics &amp; Plant Breeding, Centurion University, Gajapati, Odisha · Updated May 2026</p>
+</footer>
+
+<script>
+// ── NAV TOGGLE ──
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+// ── ACTIVE NAV ON SCROLL ──
+const sections = document.querySelectorAll('section[id]');
+const navAs = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+  navAs.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+}, {passive: true});
+
+// ── INTERSECTION OBSERVER ──
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, {threshold: 0.08, rootMargin: '0px 0px -30px 0px'});
+document.querySelectorAll('.fade-in, .exp-item').forEach(el => io.observe(el));
+
+// ── PUBLICATION TABS ──
+function filterPubs(type, btn) {
+  document.querySelectorAll('[id^="pub-"]').forEach(el => el.classList.add('hidden'));
+  document.getElementById('pub-' + type).classList.remove('hidden');
+  document.querySelectorAll('.pub-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// ── HERO CANVAS PARTICLES ──
+const canvas = document.getElementById('heroCanvas');
+const ctx = canvas.getContext('2d');
+let W, H, particles;
+function resize() {
+  W = canvas.width = canvas.offsetWidth;
+  H = canvas.height = canvas.offsetHeight;
+}
+function initParticles() {
+  particles = Array.from({length: 60}, () => ({
+    x: Math.random() * W, y: Math.random() * H,
+    vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
+    r: Math.random() * 2 + 1,
+    op: Math.random() * 0.4 + 0.1
+  }));
+}
+function drawParticles() {
+  ctx.clearRect(0, 0, W, H);
+  particles.forEach(p => {
+    p.x += p.vx; p.y += p.vy;
+    if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+    if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(16,185,129,${p.op})`;
+    ctx.fill();
+  });
+  // connect close particles
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < 120) {
+        ctx.strokeStyle = `rgba(16,185,129,${0.15 * (1 - dist/120)})`;
+        ctx.lineWidth = 0.5;
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(drawParticles);
+}
+resize(); initParticles(); drawParticles();
+window.addEventListener('resize', () => { resize(); initParticles(); });
+</script>
+</body>
+</html>
